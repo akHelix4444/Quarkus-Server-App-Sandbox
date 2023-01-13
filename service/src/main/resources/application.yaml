@@ -1,0 +1,29 @@
+quarkus:
+  http:
+    port: 8080
+    cors: true
+
+  log:
+    level: INFO
+    console:
+      color: false
+      format: "%d{HH:mm:ss} %-5p myTraceKeyId=%X{myTraceKeyId} traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+      json:
+        ~: false
+        pretty-print: true
+        print-details: true
+
+  rest-client:
+    "my-extensions-rest-client":
+      url: "https://stage.code.quarkus.io/api"
+      scope: "javax.inject.Singleton"
+
+  smallrye-graphql:
+    schema-include-scalars: true
+    ui:
+      always-include: true
+      enable: true
+
+  opentelemetry:
+    tracer:
+      enabled: true

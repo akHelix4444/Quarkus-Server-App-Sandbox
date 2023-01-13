@@ -1,0 +1,67 @@
+plugins {
+    id "java"
+    id "io.quarkus"
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+group "com.helix.explore.quarkus"
+version "1.0.0"
+
+ext {
+    quarkusPlatformVersion = project.getProperty("quarkusPlatformVersion")
+
+    mapstructVersion = project.getProperty("mapstructVersion")
+    lombokVersion = project.getProperty("lombokVersion")
+    lombokMapstructBindingVersion = project.getProperty("lombokMapstructBindingVersion")
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    // Quarkus platform
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+
+    // Base
+    implementation "io.quarkus:quarkus-config-yaml"
+    implementation "io.quarkus:quarkus-arc"
+
+    compileOnly "org.mapstruct:mapstruct:${mapstructVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+
+    // Logging
+    implementation "org.jboss.slf4j:slf4j-jboss-logmanager"
+    implementation "io.quarkus:quarkus-logging-json"
+
+    // REST
+    implementation "io.quarkus:quarkus-resteasy-reactive-jsonb"
+    implementation "io.quarkus:quarkus-rest-client-reactive"
+
+    // GraphQL
+    implementation "io.quarkus:quarkus-hibernate-validator"
+    implementation "io.quarkus:quarkus-smallrye-graphql"
+    implementation "io.quarkus:quarkus-smallrye-graphql-client"
+
+    // Monitoring
+    implementation "io.quarkus:quarkus-micrometer-registry-prometheus"
+    implementation "io.quarkus:quarkus-opentelemetry"
+}
