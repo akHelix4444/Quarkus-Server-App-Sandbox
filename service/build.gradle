@@ -50,7 +50,8 @@ dependencies {
 
     // Logging
     implementation "org.jboss.slf4j:slf4j-jboss-logmanager"
-    implementation "io.quarkus:quarkus-logging-json"
+    // implementation "io.quarkus:quarkus-logging-json"
+    implementation "io.quarkiverse.loggingjson:quarkus-logging-json:2.0.0"
 
     // REST
     implementation "io.quarkus:quarkus-resteasy-reactive-jsonb"

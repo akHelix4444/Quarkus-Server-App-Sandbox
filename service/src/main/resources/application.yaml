@@ -5,13 +5,12 @@ quarkus:
 
   log:
     level: INFO
+    json:
+      console:
+        enable: false
     console:
       color: false
       format: "%d{HH:mm:ss} %-5p myTraceKeyId=%X{myTraceKeyId} traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
-      json:
-        ~: false
-        pretty-print: true
-        print-details: true
 
   rest-client:
     "my-extensions-rest-client":
@@ -20,6 +19,13 @@ quarkus:
 
   smallrye-graphql:
     schema-include-scalars: true
+    schema-include-schema-definition: true
+    events:
+      enabled: true
+    metrics:
+      enabled: true
+    tracing:
+      enabled: true
     ui:
       always-include: true
       enable: true

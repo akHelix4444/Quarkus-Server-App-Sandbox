@@ -1,6 +1,7 @@
 package com.helix.explore.quarkus.rest.client;
 
-import com.helix.explore.quarkus.dto.ExtensionDto;
+import com.helix.explore.quarkus.dto.rest.ExtensionDto;
+import io.smallrye.mutiny.Uni;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.GET;
@@ -14,5 +15,8 @@ public interface IExtensionClientService {
 
     @GET
     Set<ExtensionDto> getById(@QueryParam("id") String id);
+
+    @GET
+    Uni<Set<ExtensionDto>> getByIdAsync(@QueryParam("id") String id);
 
 }

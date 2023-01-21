@@ -1,4 +1,4 @@
-package com.helix.explore.quarkus.dto;
+package com.helix.explore.quarkus.dto.rest;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.EqualsAndHashCode;

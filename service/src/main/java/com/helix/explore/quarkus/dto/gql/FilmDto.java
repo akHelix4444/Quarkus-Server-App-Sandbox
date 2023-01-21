@@ -11,7 +11,8 @@ import java.time.LocalDate;
 @Setter
 @EqualsAndHashCode
 @RegisterForReflection
-public class Film {
+public class FilmDto
+        implements SearchResult {
 
     private String title;
     private Integer episodeID;

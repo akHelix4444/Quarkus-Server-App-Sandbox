@@ -1,6 +1,6 @@
 package com.helix.explore.quarkus.rest;
 
-import com.helix.explore.quarkus.dto.FruitDto;
+import com.helix.explore.quarkus.dto.rest.FruitDto;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.ws.rs.GET;
